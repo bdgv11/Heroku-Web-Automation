@@ -21,7 +21,7 @@ public class BaseTest {
         driver = browserDriverFactory.createDriver();
 
         // Open the main test page
-        String url = "https://the-internet.herokuapp.com/login";
+        String url = "https://the-internet.herokuapp.com";
         driver.get(url);
         driver.manage().window().maximize();
     }
