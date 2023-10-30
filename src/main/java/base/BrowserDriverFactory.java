@@ -3,19 +3,18 @@ package base;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.log4testng.Logger;
+import org.openqa.selenium.safari.SafariDriver;
 
 public class BrowserDriverFactory {
 
     /** In order to run test in parallel we need to create the ThreadLocal */
     private ThreadLocal<WebDriver> driver = new ThreadLocal<>();
     private String browser;
-    private Logger log;
 
     /** Creating constructor that will receive browser type and log */
-    public BrowserDriverFactory(String browser, Logger log) {
-        this.browser = browser;
-        this.log = log;
+    public BrowserDriverFactory(String browser) {
+        this.browser = browser.toLowerCase();
+
     }
 
     /**
@@ -23,7 +22,6 @@ public class BrowserDriverFactory {
      * 'browser' parameter passed. By default will open in Chrome.
      */
     public WebDriver createDriver() {
-
         switch (browser) {
             case "chrome":
                 driver.set(new ChromeDriver());
@@ -33,8 +31,11 @@ public class BrowserDriverFactory {
                 driver.set(new FirefoxDriver());
                 break;
 
+            case "safari":
+                driver.set(new SafariDriver());
+                break;
+
             default:
-                log.info("Don't know how to start this browser '" + browser + "', instead starting chrome.");
                 driver.set(new ChromeDriver());
                 break;
         }

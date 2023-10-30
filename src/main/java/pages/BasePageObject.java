@@ -2,7 +2,6 @@ package pages;
 
 import java.time.Duration;
 
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,11 +12,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class BasePageObject {
 
     protected WebDriver driver;
-    protected Logger log;
 
-    public BasePageObject(WebDriver driver, Logger log) {
+    public BasePageObject(WebDriver driver) {
         this.driver = driver;
-        this.log = log;
+
     }
 
     /** Open page with giver URL */
@@ -33,6 +31,12 @@ public class BasePageObject {
     public void clickOnElement(By locator) {
         waitForVisibilityOf(locator, Duration.ofSeconds(5));
         find(locator).click();
+    }
+
+    /** Type on element with given locator */
+    public void typeOnElement(By locator, String text) {
+        waitForVisibilityOf(locator, Duration.ofSeconds(5));
+        find(locator).sendKeys(text);
     }
 
     /**
