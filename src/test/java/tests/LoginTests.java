@@ -20,6 +20,8 @@ public class LoginTests extends TestUtilities {
         String expectedMessage = testDate.get("expectedMessage");
         String description = testDate.get("description");
 
+        System.out.println("Starting negativeLogInTest #" + no + " for " + description);
+
         // Open main page
         WelcomePage welcomePage = new WelcomePage(driver);
         welcomePage.openWelcomePage();

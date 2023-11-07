@@ -8,13 +8,12 @@ import org.openqa.selenium.safari.SafariDriver;
 public class BrowserDriverFactory {
 
     /** In order to run test in parallel we need to create the ThreadLocal */
-    private ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+    private ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
     private String browser;
 
     /** Creating constructor that will receive browser type and log */
     public BrowserDriverFactory(String browser) {
         this.browser = browser.toLowerCase();
-
     }
 
     /**

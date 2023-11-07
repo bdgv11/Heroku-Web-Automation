@@ -3,7 +3,7 @@
 <suite name="NegativeTestsSuite" verbose="1" parallel="tests" thread-count="1">
 
 	<test name="PositiveTests">
-    <parameter name="browser" value="CHROME"/>
+    <parameter name="browser" value="firefox"/>
 		<classes>
 			<class name="tests.LoginTests" />
 		</classes>
